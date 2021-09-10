@@ -1,7 +1,21 @@
-header {
-  color: rgb(64, 0, 240);
-  text-align: center;
+body{
+  font-size: 11pt;
+  font-family: 'Open Sans', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+.header {
+  height: 60px;
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  box-shadow: 0 2px 3px -2px #000;
+  color: aqua;
+  text-align: right;
+}
+
 
 h1 {
   text-align: center;
@@ -16,20 +30,20 @@ p {
   border-radius: 5px;
 }
 
-#preferidos {
+ table{
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 50%;
   margin-top: 20px;
   margin-left: 25%;
 }
-#preferidos td,
-#preferidos th {
+table td,
+table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#preferidos th {
+table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -42,3 +56,5 @@ p {
 footer {
   text-align: end;
 }
+
+
