@@ -25,7 +25,7 @@ h1 {
 
 .teste {
   display: flex;
-  flex-flow: row  nowrap;
+  flex-flow: row nowrap;
   justify-content: stretch;
   padding: 20px;
   width: 80%;
@@ -145,13 +145,43 @@ table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
+table td:first-child {
+  border-left-color: black;
+}
+table tbody:last-child tr:last-child td:nth-child(1) {
+  border-bottom-color: black;
+}
+
+table tbody:last-child tr:last-child td:nth-child(2) {
+  border-bottom-color: black;
+}
+
+table tbody:last-child tr:last-child td:nth-child(3) {
+  border-bottom-color: black;
+}
+
+table td:last-child {
+  border-right-color: black;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
+  background-color: rgb(5 43 220);
+  color: white;
+  cursor: pointer;
+  border: 2.5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.65);
 }
 
+td:hover {
+  background-color: deepskyblue;
+}
 .img-logos {
   float: left;
   width: auto;
@@ -166,6 +196,19 @@ table th {
   margin-top: 19%;
   padding: 30px;
 }
+
+.textos.html-text {
+  box-shadow: 0 4px 8px 0 rgb(227 79 42), 0 6px 20px 0 rgb(0 0 0);
+}
+
+.textos.cascade-text {
+  box-shadow: 0 4px 8px 0 rgb(44 77 228), 0 6px 20px 0 rgb(0 0 0);
+}
+
+.textos.javascript-text {
+  box-shadow: 0 4px 8px 0 rgb(247 224 24), 0 6px 20px 0 rgb(43 22 22);
+}
+
 footer {
   text-align: end;
 }
