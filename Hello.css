@@ -15,6 +15,10 @@ body {
   box-shadow: 0 2px 3px -2px #000;
   color: aqua;
   text-align: right;
+  font-size: 22px;
+  padding-right: 18px;
+  padding-top: 20px;
+  font-weight: bold;
 }
 
 h1 {
@@ -22,7 +26,14 @@ h1 {
   margin-left: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.imgsanji {
+  float: left;
+  margin-left: 25%;
+}
+h4 {
+  float: right;
+  margin-right: 25%;
+}
 .teste {
   display: flex;
   flex-flow: row nowrap;
@@ -122,9 +133,6 @@ a.degrade:hover::before {
   font-weight: 600;
   margin: 0;
 }
-div {
-  display: block;
-}
 
 p {
   font-family: Consolas, sans-serif, Calibri, sans-serif;
@@ -164,7 +172,7 @@ table td:last-child {
   border-right-color: black;
 }
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #d1cece;
 }
 
 table th {
@@ -181,6 +189,42 @@ table th {
 
 td:hover {
   background-color: deepskyblue;
+}
+
+.dados {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px;
+}
+
+input[type="text"] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.botao {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 4px 2px;
+  transition: 0.5s;
+  cursor: pointer;
+  border: 2px solid #008cba;
+}
+
+.botao:hover {
+  background-color: #008cba;
+  color: white;
 }
 .img-logos {
   float: left;
@@ -209,6 +253,13 @@ td:hover {
   box-shadow: 0 4px 8px 0 rgb(247 224 24), 0 6px 20px 0 rgb(43 22 22);
 }
 
+hr {
+  margin: 20px 0px;
+  border: 0;
+  border-top: 1px solid #eee;
+  height: 0;
+}
 footer {
   text-align: end;
+  margin-right: 10px;
 }
