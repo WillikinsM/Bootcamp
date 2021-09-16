@@ -26,7 +26,7 @@ h1 {
   margin-left: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.imgsanji {
+.img-sanji {
   float: left;
   margin-left: 25%;
 }
@@ -34,7 +34,7 @@ h4 {
   float: right;
   margin-right: 25%;
 }
-.teste {
+.cards {
   display: flex;
   flex-flow: row nowrap;
   justify-content: stretch;
@@ -44,11 +44,11 @@ h4 {
   margin: 5px auto 5px auto;
 }
 
-.teste .card-post:first-child {
+.cards .card-post:first-child {
   flex: 2 1 auto;
 }
 
-.teste .card-post {
+.cards .card-post {
   flex: 1 1 auto;
   margin: 0 6px 20px;
   height: 500px;
@@ -69,7 +69,7 @@ a {
   cursor: pointer;
 }
 
-.teste .card-post .post-image img {
+.cards .card-post .post-image img {
   width: 150px;
   height: 160px;
   padding-left: 25%;
@@ -121,13 +121,13 @@ a.degrade:hover::before {
   z-index: 1;
 }
 
-.teste .card-post:first-child h2 {
+.cards .card-post:first-child h2 {
   font-size: 28pt;
   line-height: 30pt;
   padding: 12px;
 }
 
-.teste .card-post h2 {
+.cards .card-post h2 {
   font-size: 16pt;
   line-height: 18pt;
   font-weight: 600;
@@ -153,24 +153,23 @@ table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
+
 table td:first-child {
   border-left-color: black;
 }
-table tbody:last-child tr:last-child td:nth-child(1) {
-  border-bottom-color: black;
+
+table tbody:last-child tr:last-child td {
+  border-bottom: 5px groove black;
 }
 
-table tbody:last-child tr:last-child td:nth-child(2) {
-  border-bottom-color: black;
-}
-
-table tbody:last-child tr:last-child td:nth-child(3) {
-  border-bottom-color: black;
+tr:first-child td {
+  border-top: 5px groove black;
 }
 
 table td:last-child {
   border-right-color: black;
 }
+
 tr:nth-child(even) {
   background-color: #d1cece;
 }
@@ -182,23 +181,21 @@ table th {
   background-color: rgb(5 43 220);
   color: white;
   cursor: pointer;
-  border: 2.5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.65);
 }
 
-td:hover {
-  background-color: deepskyblue;
+tr:hover {
+  background-color: rgb(0, 175, 233);
 }
 
-.dados {
+.data {
   background-color: #f2f2f2;
   border-radius: 10px;
   padding: 20px;
   margin: 15px;
 }
 
-input[type="text"] {
+input[type="text"],
+select {
   width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -208,7 +205,7 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
-.botao {
+.form-button {
   background-color: white;
   border: none;
   color: black;
@@ -222,7 +219,7 @@ input[type="text"] {
   border: 2px solid #008cba;
 }
 
-.botao:hover {
+.form-button:hover {
   background-color: #008cba;
   color: white;
 }
@@ -233,7 +230,7 @@ input[type="text"] {
   margin-top: 2%;
   margin-left: 1%;
 }
-.textos {
+.text-paragraph {
   width: 80%;
   margin: 232px;
   margin-left: 13%;
@@ -241,15 +238,15 @@ input[type="text"] {
   padding: 30px;
 }
 
-.textos.html-text {
+.text-paragraph.html-text {
   box-shadow: 0 4px 8px 0 rgb(227 79 42), 0 6px 20px 0 rgb(0 0 0);
 }
 
-.textos.cascade-text {
+.text-paragraph.cascade-text {
   box-shadow: 0 4px 8px 0 rgb(44 77 228), 0 6px 20px 0 rgb(0 0 0);
 }
 
-.textos.javascript-text {
+.text-paragraph.javascript-text {
   box-shadow: 0 4px 8px 0 rgb(247 224 24), 0 6px 20px 0 rgb(43 22 22);
 }
 
