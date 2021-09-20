@@ -5,6 +5,7 @@
     <title>HTML + CSS</title>
     <link rel="stylesheet" href="hello.css" />
     <link rel="shortcut icon" href="lib/icone.ico" />
+    <script type="text/javascript" src="hello.js"></script>
   </head>
   <body>
     <header class="header">Londrina - Setembro de 2021</header>
@@ -12,7 +13,8 @@
       <section class="cards">
         <a
           class="card-post covering degrade img-effect1"
-          href="#html-info"
+          name="html-info"
+          onclick="scrollSmooth(this.name)"
           title="The HyperText Markup Language, or HTML is the standard markup
           language for documents designed to be displayed in a web browser."
         >
@@ -35,10 +37,12 @@
 
         <a
           class="card-post covering degrade img-effect1"
-          href="#css-info"
+          name="css-info"
+          onclick="scrollSmooth(this.name)"
           title="Cascading Style Sheets (CSS) is a style sheet language used for
           describing the presentation of a document written in a markup
-          language such as HTML."
+          language such as HTML.
+          "
         >
           <div class="post-image cover-img">
             <img
@@ -60,11 +64,11 @@
 
         <a
           class="card-post covering degrade img-effect1"
-          href="#javascript-info"
+          name="javascript-info"
+          onclick="scrollSmooth(this.name)"
           title="JavaScript, often abbreviated as JS, is a
           programming language that conforms to the ECMAScript specification.
           "
-          onclick="scrollSmooth()"
         >
           <div class="post-image cover-img">
             <img
@@ -261,8 +265,5 @@
       <hr />
       Desenvolvido por Willikins - 2021
     </footer>
-
-    <script type="text/javascript" src="hello.js">
-    </script>
   </body>
 </html>
