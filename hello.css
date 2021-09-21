@@ -21,7 +21,7 @@ body {
   font-weight: bold;*/
 }
 
-.align-text-right{
+.align-text-right {
   text-align: right;
 }
 
@@ -145,7 +145,7 @@ p {
   border-radius: 6px;
 }
 
-table {
+/*table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 50%;
@@ -157,13 +157,13 @@ table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
-
+*/
 table td:first-child {
   border-left-color: black;
 }
 
 table tbody:last-child tr:last-child td {
-  border-bottom: 5px groove black;
+  border-bottom: 4px groove black;
 }
 
 tr:first-child td {
@@ -173,7 +173,7 @@ tr:first-child td {
 table td:last-child {
   border-right-color: black;
 }
-
+/*
 tr:nth-child(even) {
   background-color: #d1cece;
 }
@@ -189,6 +189,10 @@ table th {
 
 tr:hover {
   background-color: rgb(0, 175, 233);
+}*/
+
+.table{
+ width: 70%;
 }
 
 .data {
@@ -198,7 +202,7 @@ tr:hover {
   margin: 15px;
 }
 
-input[type="text"],
+/*input[type="text"],
 select {
   width: 50%;
   padding: 12px 20px;
@@ -207,6 +211,12 @@ select {
   border: 2px solid #ccc;
   border-radius: 10px;
   box-sizing: border-box;
+}*/
+
+.form-control,
+.form-select {
+  width: 25%;
+  margin: 0 0 5px 0;
 }
 
 .form-button {
@@ -221,6 +231,7 @@ select {
   transition: 0.5s;
   cursor: pointer;
   border: 2px solid #008cba;
+  border-radius: 3px;
 }
 
 .form-button:hover {
