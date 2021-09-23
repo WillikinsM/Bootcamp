@@ -70,6 +70,11 @@ tableData.forEach((emp) => {
 });
 myTable.appendChild(table);
 
+
+
+/**
+ * filtering de dados na tabela
+ */
 function filtering() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("text-tab");
@@ -79,9 +84,10 @@ function filtering() {
   console.log(table);
   tr = table.getElementsByTagName("tr");
   console.log(tr);
+  var select = document.getElementById("options").selectedIndex;
 
   for (i = 0; tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[select];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
