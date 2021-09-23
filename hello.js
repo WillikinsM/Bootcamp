@@ -42,6 +42,7 @@ let tableData = [
 let headers = ["Name", "Category", "Release Year"];
 let table = document.createElement("table");
 table.className = "table table-striped table-bordered table-hover ms-auto";
+table.id = "my-table";
 let tHead = document.createElement("thead");
 tHead.className = "table-dark";
 let headerRow = document.createElement("tr");
@@ -68,3 +69,26 @@ tableData.forEach((emp) => {
   table.appendChild(tBody);
 });
 myTable.appendChild(table);
+
+function filtering() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("text-tab");
+  console.log(input);
+  filter = input.value.toUpperCase();
+  table = document.getElementById("my-table");
+  console.log(table);
+  tr = table.getElementsByTagName("tr");
+  console.log(tr);
+
+  for (i = 0; tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
