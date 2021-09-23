@@ -46,14 +46,30 @@ table.id = "my-table";
 let tHead = document.createElement("thead");
 tHead.className = "table-dark";
 let headerRow = document.createElement("tr");
-let tBody = document.createElement("tbody");
 
-headers.forEach((headerText) => {
+let tBody = document.createElement("tbody");
+let ico = document.createElement("i");
+ico.className = "bi bi-arrow-down-short";
+
+//var i = 0;
+//headers.forEach((headerText) => {
+// let header = document.createElement("th");
+//header.setAttribute("onclick","sortTable("+i+")");
+//let textNode = document.createTextNode(headerText);
+// header.appendChild(textNode);
+// header.insertAdjacentElement("beforeend",ico);
+// headerRow.appendChild(header);
+//  i++;
+//});
+for (var i = 0; i < headers.length; i++) {
   let header = document.createElement("th");
-  let textNode = document.createTextNode(headerText);
+  header.setAttribute("onclick", "sortTable(" + i + ")");
+  header.id = "my" + i + "header";
+  let textNode = document.createTextNode(headers[i]);
   header.appendChild(textNode);
   headerRow.appendChild(header);
-});
+}
+
 tHead.appendChild(headerRow);
 table.appendChild(tHead);
 
@@ -70,20 +86,15 @@ tableData.forEach((emp) => {
 });
 myTable.appendChild(table);
 
-
-
 /**
  * filtering de dados na tabela
  */
 function filtering() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("text-tab");
-  console.log(input);
   filter = input.value.toUpperCase();
   table = document.getElementById("my-table");
-  console.log(table);
   tr = table.getElementsByTagName("tr");
-  console.log(tr);
   var select = document.getElementById("options").selectedIndex;
 
   for (i = 0; tr.length; i++) {
@@ -97,4 +108,57 @@ function filtering() {
       }
     }
   }
+}
+
+function sortTable(n) {
+  switchIcon(n);
+  var table,
+    rows,
+    switching,
+    i,
+    x,
+    y,
+    shouldSwitch,
+    dir,
+    switchcount = 0;
+  table = document.getElementById("my-table");
+  switching = true;
+  dir = "asc";
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < rows.length - 1; i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("td")[n];
+      y = rows[i + 1].getElementsByTagName("td")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount++;
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+
+  function switchIcon(n) {
+    var header = document.getElementById("my"+n+"header");
+    console.log(header);
+    header.insertAdjacentElement("beforeend",ico);
+  }
+
 }

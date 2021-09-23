@@ -135,6 +135,13 @@ table th {
   margin: 0 0 5px 0;
 }
 
+.form-control {
+  background-image: url("lib/search.svg");
+  background-repeat: no-repeat;
+  background-position: 10px 12px;
+  padding-left: 30px;
+}
+
 .form-button {
   background-color: white;
   border: none;
