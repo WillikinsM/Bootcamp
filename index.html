@@ -226,7 +226,60 @@
       </section>
 
       <div class="data-form">
-        <form class="forms">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Filter by
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton2"
+              >
+                <li><option class="dropdown-item active">Name</option></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                  <option class="dropdown-item">Category &raquo;</option>
+                  <ul class="dropdown-menu dropdown-submenu dropdown-menu-dark">
+                    <li>
+                      <option class="dropdown-item">Música</option>
+                    </li>
+                    <li>
+                      <option class="dropdown-item">Série</option>
+                    </li>
+                    <li>
+                      <option class="dropdown-item">Jogo</option>
+                    </li>
+                    <li>
+                      <option class="dropdown-item">Anime</option>
+                      <option></option>
+                    </li>
+                  </ul>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <option class="dropdown-item">Release Year</option>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <input
+            class="form-control"
+            type="text"
+            id="text-tab"
+            name="text-tab"
+            onkeyup="filtering()"
+            placeholder="Type here..."
+          />
+        </div>
+
+        <!--- <form class="form-inline">
           <label for="options">Select an option:</label>
           <select class="form-select" id="options" name="options">
             <option value="name">Name</option>
@@ -242,6 +295,7 @@
             placeholder="Type here..."
           />
         </form>
+        -->
         <div id="my-data"></div>
       </div>
     </main>

@@ -48,9 +48,10 @@ tHead.className = "table-dark";
 let headerRow = document.createElement("tr");
 
 let tBody = document.createElement("tbody");
-let ico = document.createElement("i");
-ico.className = "bi bi-arrow-down-short";
-
+let icoDown = document.createElement("i");
+icoDown.className = "bi bi-arrow-down-short";
+let icoUp = document.createElement("i");
+icoUp.className = "bi bi-arrow-up-short";
 //var i = 0;
 //headers.forEach((headerText) => {
 // let header = document.createElement("th");
@@ -111,7 +112,6 @@ function filtering() {
 }
 
 function sortTable(n) {
-  switchIcon(n);
   var table,
     rows,
     switching,
@@ -153,12 +153,23 @@ function sortTable(n) {
         switching = true;
       }
     }
+
+    switchIcon(n, dir);
   }
 
-  function switchIcon(n) {
-    var header = document.getElementById("my"+n+"header");
-    console.log(header);
-    header.insertAdjacentElement("beforeend",ico);
+  function switchIcon(n, dir) {
+    if (dir === "asc") {
+      var header = document.getElementById("my" + n + "header");
+      if (header.children[0] != undefined) {
+        header.children[0].remove();
+      }
+      header.appendChild(icoDown);
+    }  if (dir === "desc") {
+      var header = document.getElementById("my" + n + "header");
+      if (header.children[0] != undefined) {
+        header.children[0].remove();
+      }
+      header.appendChild(icoUp);
+    }
   }
-
 }
