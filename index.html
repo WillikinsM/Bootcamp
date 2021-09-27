@@ -229,44 +229,18 @@
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Filter by
-              </button>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton2"
-              >
-                <li><option class="dropdown-item active">Name</option></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                  <option class="dropdown-item">Category &raquo;</option>
-                  <ul class="dropdown-menu dropdown-submenu dropdown-menu-dark">
-                    <li>
-                      <option class="dropdown-item">Música</option>
-                    </li>
-                    <li>
-                      <option class="dropdown-item">Série</option>
-                    </li>
-                    <li>
-                      <option class="dropdown-item">Jogo</option>
-                    </li>
-                    <li>
-                      <option class="dropdown-item">Anime</option>
-                      <option></option>
-                    </li>
-                  </ul>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <option class="dropdown-item">Release Year</option>
-                </li>
-              </ul>
+              <select class="btn btn-secondary" id="options" name="options" onchange= filtering()>
+                <option class="btn btn-secondary" value="name">Name</option>
+                <optgroup class="btn btn-secondary" label="Category &raquo">
+                  <option value="musica">Música</option>
+                  <option value="serie">Série</option>
+                  <option value="jogo">Jogo</option>
+                  <option value="anime">Anime</option>
+                </optgroup>
+                <option class="btn btn-secondary" value="year">
+                  Release Year
+                </option>
+              </select>
             </div>
           </div>
           <input
@@ -279,23 +253,6 @@
           />
         </div>
 
-        <!--- <form class="form-inline">
-          <label for="options">Select an option:</label>
-          <select class="form-select" id="options" name="options">
-            <option value="name">Name</option>
-            <option value="category">Category</option>
-            <option value="year">Release Year</option>
-          </select>
-          <input
-            class="form-control"
-            type="text"
-            id="text-tab"
-            name="text-tab"
-            onkeyup="filtering()"
-            placeholder="Type here..."
-          />
-        </form>
-        -->
         <div id="my-data"></div>
       </div>
     </main>

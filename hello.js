@@ -36,7 +36,16 @@ let tableData = [
   { name: "Final Fantasy XV", category: "Jogo", releaseYear: 2016 },
   { name: "Fullmetal Alchmist", category: "Anime", releaseYear: 2009 },
   { name: "Closed On Sunday", category: "Música", releaseYear: 2019 },
-  { name: "Preacher", category: "Série", releaseYear: 2016 },
+  { name: "Utopia", category: "Série", releaseYear: 2020 },
+  { name: "In My Room", category: "Música", releaseYear: 2019 },
+  { name: "Real Compton City G's", category: "Música", releaseYear: 1993 },
+  { name: "So Fresh, So Clean", category: "Música", releaseYear: 2000 },
+  { name: "Community", category: "Série", releaseYear: 2009 },
+  { name: "One Piece", category: "Anime", releaseYear: 1997 },
+  { name: "JoJo's Bizarre Adventures", category: "Anime", releaseYear: 2016 },
+  { name: "Apex Legends", category: "Jogo", releaseYear: 2019 },
+  { name: "Spider-Man", category: "Jogo", releaseYear: 2018 },
+  { name: "Mass Effect", category: "Jogo", releaseYear: 2007 },
 ];
 
 let headers = ["Name", "Category", "Release Year"];
@@ -52,16 +61,7 @@ let icoDown = document.createElement("i");
 icoDown.className = "bi bi-arrow-down-short";
 let icoUp = document.createElement("i");
 icoUp.className = "bi bi-arrow-up-short";
-//var i = 0;
-//headers.forEach((headerText) => {
-// let header = document.createElement("th");
-//header.setAttribute("onclick","sortTable("+i+")");
-//let textNode = document.createTextNode(headerText);
-// header.appendChild(textNode);
-// header.insertAdjacentElement("beforeend",ico);
-// headerRow.appendChild(header);
-//  i++;
-//});
+
 for (var i = 0; i < headers.length; i++) {
   let header = document.createElement("th");
   header.setAttribute("onclick", "sortTable(" + i + ")");
@@ -93,15 +93,39 @@ myTable.appendChild(table);
 function filtering() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("text-tab");
-  filter = input.value.toUpperCase();
+  filter = input.value
+    .toUpperCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
   table = document.getElementById("my-table");
   tr = table.getElementsByTagName("tr");
   var select = document.getElementById("options").selectedIndex;
 
+  if ((select > 0) & (select < 5)) {
+    var op = document.getElementById("options");
+    input = op.options[op.selectedIndex].text;
+    filter = input
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    select = 1;
+  }
+  if (select === 5) {
+    select = 2;
+  }
+
   for (i = 0; tr.length; i++) {
+    if(input.value === "" || filter === ""){
+      var remover = document.getElementById("my-table");
+      remover.remove();
+      recreation();
+      break;
+    } 
     td = tr[i].getElementsByTagName("td")[select];
     if (td) {
-      txtValue = td.textContent || td.innerText;
+      txtValue =
+        td.textContent.normalize("NFD").replace(/[\u0300-\u036f]/g, "") ||
+        td.innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
@@ -111,6 +135,10 @@ function filtering() {
   }
 }
 
+/**
+ * function for sorting the table data
+ *
+ */
 function sortTable(n) {
   var table,
     rows,
@@ -157,6 +185,10 @@ function sortTable(n) {
     switchIcon(n, dir);
   }
 
+  /**
+   * Switch arrow icon in table head
+   *
+   */
   function switchIcon(n, dir) {
     if (dir === "asc") {
       var header = document.getElementById("my" + n + "header");
@@ -164,7 +196,8 @@ function sortTable(n) {
         header.children[0].remove();
       }
       header.appendChild(icoDown);
-    }  if (dir === "desc") {
+    }
+    if (dir === "desc") {
       var header = document.getElementById("my" + n + "header");
       if (header.children[0] != undefined) {
         header.children[0].remove();
@@ -172,4 +205,47 @@ function sortTable(n) {
       header.appendChild(icoUp);
     }
   }
+}
+
+function recreation(){
+
+let headers = ["Name", "Category", "Release Year"];
+let table = document.createElement("table");
+table.className = "table table-striped table-bordered table-hover ms-auto";
+table.id = "my-table";
+let tHead = document.createElement("thead");
+tHead.className = "table-dark";
+let headerRow = document.createElement("tr");
+
+let tBody = document.createElement("tbody");
+let icoDown = document.createElement("i");
+icoDown.className = "bi bi-arrow-down-short";
+let icoUp = document.createElement("i");
+icoUp.className = "bi bi-arrow-up-short";
+
+for (var i = 0; i < headers.length; i++) {
+  let header = document.createElement("th");
+  header.setAttribute("onclick", "sortTable(" + i + ")");
+  header.id = "my" + i + "header";
+  let textNode = document.createTextNode(headers[i]);
+  header.appendChild(textNode);
+  headerRow.appendChild(header);
+}
+
+tHead.appendChild(headerRow);
+table.appendChild(tHead);
+
+tableData.forEach((emp) => {
+  let row = document.createElement("tr");
+  Object.values(emp).forEach((text) => {
+    let cell = document.createElement("td");
+    let textNode = document.createTextNode(text);
+    cell.appendChild(textNode);
+    row.appendChild(cell);
+  });
+  tBody.appendChild(row);
+  table.appendChild(tBody);
+});
+myTable.appendChild(table);
+
 }
