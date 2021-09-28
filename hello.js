@@ -88,7 +88,8 @@ tableData.forEach((emp) => {
 myTable.appendChild(table);
 
 /**
- * filtering de dados na tabela
+ * This function filter the data in table acordin to the text input in the form 
+ * 
  */
 function filtering() {
   var input, filter, table, tr, td, i, txtValue;
@@ -140,7 +141,7 @@ function filtering() {
 }
 
 /**
- * function for sorting the table data
+ * This function Sorts the table data
  *
  */
 function sortTable(n) {
@@ -190,7 +191,7 @@ function sortTable(n) {
   }
 
   /**
-   * Switch arrow icon in table head
+   * this function switch the arrow icon in table head acording to the direction of the sorting
    *
    */
   function switchIcon(n, dir) {
@@ -211,6 +212,10 @@ function sortTable(n) {
   }
 }
 
+
+/**
+ * This function recreat the table if it was changed by the filtering option
+ */
 function recreation() {
   let headers = ["Name", "Category", "Release Year"];
   let table = document.createElement("table");
