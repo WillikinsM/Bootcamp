@@ -96,7 +96,7 @@ function filtering() {
   filter = input.value
     .toUpperCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    .replace(/[\u0300-\u036f \s+]/g, "");
   table = document.getElementById("my-table");
   tr = table.getElementsByTagName("tr");
   var select = document.getElementById("options").selectedIndex;
@@ -107,7 +107,7 @@ function filtering() {
     filter = input
       .toUpperCase()
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+      .replace(/[\u0300-\u036f \s+]/g, "");
     select = 1;
   }
   if (select === 5) {
@@ -115,17 +115,21 @@ function filtering() {
   }
 
   for (i = 0; tr.length; i++) {
-    if(input.value === "" || filter === ""){
+    if (input.value === "" || filter === "") {
       var remover = document.getElementById("my-table");
       remover.remove();
       recreation();
       break;
-    } 
+    }
     td = tr[i].getElementsByTagName("td")[select];
     if (td) {
       txtValue =
-        td.textContent.normalize("NFD").replace(/[\u0300-\u036f]/g, "") ||
-        td.innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        td.textContent
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f \s+]/g, "") ||
+        td.innerText
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f \s+]/g, "");
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
@@ -207,45 +211,43 @@ function sortTable(n) {
   }
 }
 
-function recreation(){
+function recreation() {
+  let headers = ["Name", "Category", "Release Year"];
+  let table = document.createElement("table");
+  table.className = "table table-striped table-bordered table-hover ms-auto";
+  table.id = "my-table";
+  let tHead = document.createElement("thead");
+  tHead.className = "table-dark";
+  let headerRow = document.createElement("tr");
 
-let headers = ["Name", "Category", "Release Year"];
-let table = document.createElement("table");
-table.className = "table table-striped table-bordered table-hover ms-auto";
-table.id = "my-table";
-let tHead = document.createElement("thead");
-tHead.className = "table-dark";
-let headerRow = document.createElement("tr");
+  let tBody = document.createElement("tbody");
+  let icoDown = document.createElement("i");
+  icoDown.className = "bi bi-arrow-down-short";
+  let icoUp = document.createElement("i");
+  icoUp.className = "bi bi-arrow-up-short";
 
-let tBody = document.createElement("tbody");
-let icoDown = document.createElement("i");
-icoDown.className = "bi bi-arrow-down-short";
-let icoUp = document.createElement("i");
-icoUp.className = "bi bi-arrow-up-short";
+  for (var i = 0; i < headers.length; i++) {
+    let header = document.createElement("th");
+    header.setAttribute("onclick", "sortTable(" + i + ")");
+    header.id = "my" + i + "header";
+    let textNode = document.createTextNode(headers[i]);
+    header.appendChild(textNode);
+    headerRow.appendChild(header);
+  }
 
-for (var i = 0; i < headers.length; i++) {
-  let header = document.createElement("th");
-  header.setAttribute("onclick", "sortTable(" + i + ")");
-  header.id = "my" + i + "header";
-  let textNode = document.createTextNode(headers[i]);
-  header.appendChild(textNode);
-  headerRow.appendChild(header);
-}
+  tHead.appendChild(headerRow);
+  table.appendChild(tHead);
 
-tHead.appendChild(headerRow);
-table.appendChild(tHead);
-
-tableData.forEach((emp) => {
-  let row = document.createElement("tr");
-  Object.values(emp).forEach((text) => {
-    let cell = document.createElement("td");
-    let textNode = document.createTextNode(text);
-    cell.appendChild(textNode);
-    row.appendChild(cell);
+  tableData.forEach((emp) => {
+    let row = document.createElement("tr");
+    Object.values(emp).forEach((text) => {
+      let cell = document.createElement("td");
+      let textNode = document.createTextNode(text);
+      cell.appendChild(textNode);
+      row.appendChild(cell);
+    });
+    tBody.appendChild(row);
+    table.appendChild(tBody);
   });
-  tBody.appendChild(row);
-  table.appendChild(tBody);
-});
-myTable.appendChild(table);
-
+  myTable.appendChild(table);
 }
